@@ -20,8 +20,10 @@ public class SpringDep {
     public void injectDependencies(Object target){
         Field[] fields=target.getClass().getDeclaredFields();
         for(Field field:fields){
+            System.out.println(field);
             if(field.isAnnotationPresent(MyInject.class)){
                 Class<?> fieldType=field.getType();
+                System.out.println(fieldType);
                 Object instance=instances.get(fieldType);
                 if(instance!=null){
                     field.setAccessible(true);

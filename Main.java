@@ -20,11 +20,14 @@ public class Main {
         springDep.injectDependencies(serviceB);
         serviceB.perform();
 
+//        Class<?> something=Main.class;
+//        System.out.println(something.getName().split("\\.")[2]);
     }
 
-    public void scanClasses(){
+    public void scanClasses() throws InstantiationException, IllegalAccessException {
         String packageName = "org.scratch";
-
+        Class c=Main.class;
+        var c1=c.newInstance();
         Reflections reflections = new Reflections(
                 new ConfigurationBuilder()
                         .setScanners(new SubTypesScanner(false))
